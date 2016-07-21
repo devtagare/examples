@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<configuration>
+	<!-- <property> <name>dt.application.{appName}.operator.{opName}.prop.{propName}</name> 
+		<value>some-default-value (if value is not specified, it is required from 
+		the user or custom config when launching)</value> </property> -->
+	<!-- memory assigned to app master <property> <name>dt.attr.MASTER_MEMORY_MB</name> 
+		<value>1024</value> </property> -->
+
+	<!-- Static partitioning, specify the partition count, this decides how 
+		many ranges would be initiated -->
+	<property>
+		<name>dt.application.JDBCToHDFSApp.operator.JdbcPoller.prop.partitionCount
+		</name>
+		<value>3</value>
+	</property>
+
+	<!-- JDBC driver in use -->
+	<property>
+		<name>dt.application.JDBCToHDFSApp.operator.JdbcPoller.prop.store.databaseDriver
+		</name>
+		<value>com.mysql.jdbc.Driver</value>
+	</property>
+
+	<!-- URL to connect to the DB master -->
+	<property>
+		<name>dt.application.JDBCToHDFSApp.operator.JdbcPoller.prop.store.databaseUrl
+		</name>
+		<value>jdbc:mysql://node17.morado.com:5505/banana</value>
+	</property>
+
+	<!-- Username -->
+	<property>
+		<name>dt.application.JDBCToHDFSApp.operator.JdbcPoller.prop.store.userName
+		</name>
+		<value>root</value>
+	</property>
+
+	<!-- Password -->
+	<property>
+		<name>dt.application.JDBCToHDFSApp.operator.JdbcPoller.prop.store.password
+		</name>
+		<value>password</value>
+	</property>
+
+	<!-- Batch size for poller -->
+	<property>
+		<name>dt.application.JDBCToHDFSApp.operator.JdbcPoller.prop.batchSize
+		</name>
+		<value>300</value>
+	</property>
+
+	<!-- look-up key for forming range queries, this would be the column name 
+		on which the table is sorted -->
+	<property>
+		<name>dt.application.JDBCToHDFSApp.operator.JdbcPoller.prop.key
+		</name>
+		<value>Canonical_AC_Num</value>
+	</property>
+
+	<property>
+		<name>dt.application.JDBCToHDFSApp.operator.JdbcPoller.prop.emitColumnList
+		</name>
+		<value>Canonical_AC_Num,TRANS_AMOUNT,SOURCE_DATA_RECORD,Account_No
+		</value>
+	</property>
+
+	<!-- Table name -->
+	<property>
+		<name>dt.application.JDBCToHDFSApp.operator.JdbcPoller.prop.tableName
+		</name>
+		<value>ATM_CASH_IN_TABLE_1</value>
+	</property>
+
+	<property>
+		<name>dt.application.JDBCToHDFSApp.operator.JdbcPoller.prop.pollInterval
+		</name>
+		<value>100</value>
+	</property>
+
+	<!-- Output folder for HDFS output operator -->
+	<property>
+		<name>dt.application.JDBCToHDFSApp.operator.Writer.filePath</name>
+		<value>/user/devendrat/poc/tangerine/output</value>
+	</property>
+
+</configuration>
+
